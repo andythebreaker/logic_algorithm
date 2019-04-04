@@ -162,7 +162,7 @@ string plot3(int *input){
  buf=SP(EN(buf),1);
  buf+="C";
  buf=SP(SL(SP(buf,1)),1);
- buf+="| 00 01 11 10|";
+ buf+="| 00  01  11  10|";
  buf=SP(EN(MP3(PL(MN(EN(buf),5)),4)),3);
  buf+="0 | ";
  buf+=XO(input[0]);
