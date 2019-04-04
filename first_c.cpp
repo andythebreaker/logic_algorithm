@@ -188,11 +188,68 @@ string plot3(int *input){
 return (buf);
 }
 
+string plot4(int *input){
+ string buf="";
+ buf=SL(SP(EN(EQ(KMAP(EQ(buf,9)),9)),2));
+ buf+="AB|";
+ buf=SP(buf,15);
+ buf+="|";
+ buf=EN(buf);
+ buf+="CD";
+ buf=SP(SL(SP(buf,1)),1);
+ buf+="| 00  01  11  10|";
+ buf=SP(EN(MP3(PL(MN(EN(buf),5)),4)),2);
+ buf+="00 | ";
+ buf+=XO(input[0]);
+ buf=rowS(buf);
+ buf+=XO(input[4]);
+ buf=rowS(buf);
+ buf+=XO(input[12]);
+ buf=rowS(buf);
+ buf+=XO(input[8]);
+ buf+=" |";
+ buf=SP(EN(MP3(PL(MN(EN(buf),5)),4)),2);
+ buf+="01 | ";
+ buf+=XO(input[1]);
+ buf=rowS(buf);
+ buf+=XO(input[5]);
+ buf=rowS(buf);
+ buf+=XO(input[13]);
+ buf=rowS(buf);
+ buf+=XO(input[9]);
+ buf+=" |";
+ buf=SP(EN(MP3(PL(MN(EN(buf),5)),4)),2);
+ buf+="11 | ";
+ buf+=XO(input[3]);
+ buf=rowS(buf);
+ buf+=XO(input[7]);
+ buf=rowS(buf);
+ buf+=XO(input[15]);
+ buf=rowS(buf);
+ buf+=XO(input[11]);
+ buf+=" |";
+ buf=SP(EN(MP3(PL(MN(EN(buf),5)),4)),3);
+ buf+="10 | ";
+ buf+=XO(input[2]);
+ buf=rowS(buf);
+ buf+=XO(input[6]);
+ buf=rowS(buf);
+ buf+=XO(input[14]);
+ buf=rowS(buf);
+ buf+=XO(input[10]);
+ buf+=" |";
+ buf=EN(MP3(PL(MN(EN(buf),5)),4));
+ cout << buf;
+return (buf);
+}
+
 int main() 
 {
   int X22[]={1,0,-1,4};
  int X33[]={1,0,-1,4,1,0,-1,4};
+ int X44[]={1,0,-1,4,1,0,-1,4,1,0,-1,4,1,0,-1,4};
   plot2(X22);
  plot3(X33);
+ plot3(X44);
   return 0;
 }
