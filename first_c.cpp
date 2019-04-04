@@ -2,13 +2,13 @@
 using namespace std;
 string XO(int IO){
  if(IO==0){
-   retutn "0";
+   return "0";
  }else if(IO==1){
-   retutn "1";
+   return "1";
  }else if(IO==-1){
-   retutn "X";
+   return "X";
  }else{
-   retutn "Z";
+   return "Z";
  }
 }
 void plot2(int *input){
