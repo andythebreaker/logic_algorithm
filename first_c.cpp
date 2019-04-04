@@ -87,7 +87,7 @@ for(int i=0;i<5;i++){
 }
 int main() 
 {
-  int X22=[1,2,3,4]
+  int X22[]={1,2,3,4};
   plot2(X22);
   return 0;
 }
