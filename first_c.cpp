@@ -191,6 +191,8 @@ return (buf);
 int main() 
 {
   int X22[]={1,0,-1,4};
+ int X33[]={1,0,-1,4,1,0,-1,4};
   plot2(X22);
+ plot3(X33);
   return 0;
 }
