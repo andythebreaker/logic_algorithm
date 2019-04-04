@@ -42,8 +42,7 @@ void plot2(int *input){
    output2+=" | ";
   output2+=input[2];//10->2
    output2+="| \n";
-  cout << output2;
-}
+  
 for(int i=0;i<5;i++){
     output2+="-";
 
