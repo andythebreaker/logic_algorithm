@@ -183,7 +183,7 @@ string plot3(int *input){
  buf=rowS(buf);
  buf+=XO(input[5]);
  buf+=" |";
- buf=SP(EN(MP3(PL(MN(EN(buf),5)),4)),3);
+ buf=SP(EN(MP3(PL(MN(EN(buf),5)),4)),0);
  cout << buf;
 return (buf);
 }
@@ -228,7 +228,7 @@ string plot4(int *input){
  buf=rowS(buf);
  buf+=XO(input[11]);
  buf+=" |";
- buf=SP(EN(MP3(PL(MN(EN(buf),5)),4)),3);
+ buf=SP(EN(MP3(PL(MN(EN(buf),5)),4)),2);
  buf+="10 | ";
  buf+=XO(input[2]);
  buf=rowS(buf);
