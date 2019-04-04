@@ -45,14 +45,14 @@ void plot2(int *input){
   }
   output2+="+\n";
   for(int i=0;i<3;i++){
-    output2+="0";
+    output2+=" ";
 
   }
   output2+="0 | ";
   output2+=XO(input[0]);//00->0
    output2+=" | ";
   output2+=XO(input[2]);//10->2
-   output2+="| \n";
+   output2+=" | \n";
   
 for(int i=0;i<5;i++){
     output2+="-";
@@ -70,14 +70,14 @@ for(int i=0;i<5;i++){
   }
   output2+="+\n";
   for(int i=0;i<3;i++){
-    output2+="0";
+    output2+=" ";
 
   }
   output2+="0 | ";
   output2+=XO(input[1]);
    output2+=" | ";
   output2+=XO(input[3]);
-   output2+="| \n";
+   output2+=" | \n";
 for(int i=0;i<5;i++){
     output2+="-";
 
