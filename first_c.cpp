@@ -1,5 +1,16 @@
 #include <iostream>
 using namespace std;
+string XO(int IO){
+ if(IO==0){
+   retutn "0";
+ }else if(IO==1){
+   retutn "1";
+ }else if(IO==-1){
+   retutn "X";
+ }else{
+   retutn "Z";
+ }
+}
 void plot2(int *input){
   string output2;
   for(int i=0;i<5;i++){
@@ -38,9 +49,9 @@ void plot2(int *input){
 
   }
   output2+="0 | ";
-  output2+=input[0];//00->0
+  output2+=XO(input[0]);//00->0
    output2+=" | ";
-  output2+=input[2];//10->2
+  output2+=XO(input[2]);//10->2
    output2+="| \n";
   
 for(int i=0;i<5;i++){
@@ -63,9 +74,9 @@ for(int i=0;i<5;i++){
 
   }
   output2+="0 | ";
-  output2+=input[1];
+  output2+=XO(input[1]);
    output2+=" | ";
-  output2+=input[3];
+  output2+=XO(input[3]);
    output2+="| \n";
 for(int i=0;i<5;i++){
     output2+="-";
@@ -87,7 +98,7 @@ for(int i=0;i<5;i++){
 }
 int main() 
 {
-  int X22[]={1,2,3,4};
+  int X22[]={1,0,-1,4};
   plot2(X22);
   return 0;
 }
