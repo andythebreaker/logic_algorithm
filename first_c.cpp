@@ -19,13 +19,13 @@ int main()
 
   }
   output2+="|";
-  output2+="\n B \ | 0   1 |\n";
+  output2+="\n B \\ | 0   1 |\n";
   for(int i=0;i<5;i++){
     output2+="-";
 
   }
    output2+="+";
-  for(int i=0;i<9;i++){
+  for(int i=0;i<8;i++){
     output2+="-";
 
   }
