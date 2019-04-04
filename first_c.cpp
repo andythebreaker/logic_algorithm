@@ -13,7 +13,7 @@ int main()
     output2+="=";
 
   }
- output2+="  i A|";
+ output2+="\n  \\ A|";
   cout << output2;
   return 0;
 }
