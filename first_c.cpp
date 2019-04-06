@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <string>
 
 using namespace std;
 string EQ(string input,int add){
@@ -251,27 +252,34 @@ int strTIT(string input){
 	string vv="v";
 	while(i<input.size()){
 		buf=input.substr(i,1);
-	cout<<"\nOK+"<<buf<<"\n";
-		cout<<(buf==vv);
-		if((buf==vv)==1){
-	cout<<"\nV";
+	/*	cout<<"\nOK+"<<buf<<"\n";
+int fuck = (int)(buf==vv);
+cout<<fuck;
+if(fuck==1){cout<<"fuck";
+return 0;}
+*/
+
+		if(buf=="v"){
+			cout<<"\nV";
 
 			return (0);
 		}
-	       	if(buf=="m"){
-	cout<<"\nV";
+		if(buf=="m"){
+			cout<<"\nV";
 
 			return (1);
 		}
 		if(buf=="d"){
-	cout<<"\nD";
+			cout<<"\nD";
 
 			return (2);
 		}
+	
 		i++;
+		cout<<i<<"\n";
 	}
-cout<<"error";
-return (0);
+	cout<<"error";
+	return (0);
 }
 
 int str2int(string str){
@@ -292,17 +300,30 @@ int V(string input){
 	string buf="";
 	int i =0;
 	int go=0;
+	cout<<"alive\n";
 	while(i<input.size()){
+//	cout<<"alive1\n";
 		buf=input.substr(i,1);
+//	cout<<"alive2\n";
 		if(buf==" "){
+//	cout<<"alive3\n";
 			go =1;
+			i++;
+//	cout<<"alive4\n";
 			continue;
+//	cout<<"alive5\n";
 		}
+//	cout<<"alive6\n";
 		if(go==1){
-		cout<<"\nck"<<str2int(buf);
+//	cout<<"alive7\n";
+			cout<<"\nck"<<str2int(buf);
+//	cout<<"alive8\n";
 			return (str2int(buf));
+//	cout<<"alive9\n";
 		}
+//	cout<<"alive10\n";
 		i++;
+//cout<<"alive11\n";
 	}
 }
 
@@ -311,30 +332,58 @@ void array_changer(int *arr,int v,string sm,string sd){
 	int go =0;
 	int i=0;
 	int index=0;
+//	string str4split="";
+	string comaSM="";
+	string comaSD="";
+//cout<<"check it out la "<<v<<endl;
 	while(i<sm.size()){
 		buf=sm.substr(i,1);
 		if(buf==" "){
 			go =1;
+	i++;
 			continue;
 		}
 		if(go==1){
-			index= (str2int(buf));
-			arr[index]=1;
+comaSM=sm.substr(i,sm.size()-i);
+cout<<"ck"<<comaSM<<endl;
+stringstream ss;
+ss<<comaSM;
+
+string str4split;
+//string split_buf;
+while(getline(ss,str4split,',')){
+arr[str2int(str4split)]=1;
+}
+break;
+//			index= (str2int(buf));
+//			arr[index]=1;
 		}
 		i++;
 	}
 	buf="";
 	go=0;
-i=0;
+	i=0;
 	while(i<sd.size()){
 		buf=sd.substr(i,1);
 		if(buf==" "){
 			go =1;
+	i++;
 			continue;
 		}
 		if(go==1){
-			index= (str2int(buf));
-			arr[index]=-1;
+comaSD=sd.substr(i,sd.size()-i);
+cout<<"ck"<<comaSD<<endl;
+stringstream ss;
+ss<<comaSD;
+string str4split;
+//string split_buf;
+while(getline(ss,str4split,',')){
+arr[str2int(str4split)]=-1;
+}
+break;
+
+		//	index= (str2int(buf));
+//			arr[index]=-1;
 		}
 		i++;
 	}
@@ -407,9 +456,9 @@ int main()
 			array_changer(X22,v*v,mBUF,dBUF);
 			break;
 	}
-for(int i=0;i<v*v;i++){
-cout<<","<<X44[i];
-}
+	for(int i=0;i<v*v;i++){
+		cout<<","<<X44[i];
+	}
 	plot4(X44);
 	return 0;
 }
