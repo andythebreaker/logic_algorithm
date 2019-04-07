@@ -362,7 +362,12 @@ void array_changer(int *arr,int v,string sm,string sd){
 		i++;
 	}
 }
-
+int t(int i){
+if ((i==1)||(i==-1)){
+return 1;
+}
+return 0;
+}
 string kmap(string instrA,string instrB,string instrC,int *X22,int *X33,int *X44){
 
 	int v=0;
@@ -422,12 +427,25 @@ string kmap(string instrA,string instrB,string instrC,int *X22,int *X33,int *X44
 		case 2:
 			array_changer(X22,v*v,mBUF,dBUF);
 			returN= (plot2(X22));
+			int resl=0;
+	if((X22[0]==0)&&(X22[1]==0)&&(X22[2]==0)&&(X22[3]==0)){resl=0;}
+	
+	if((X22[0]*X22[1]*X22[2]*X22[3])==1){resl=1;}
+	int st=0;
+	int rem[];
+	if(t(X22[st])){
+if(t(X22[ud(st)])){
+
+}
+
+	}
+	
 			break;
 	}
 	return (returN);
 }
 
-int up(int input){
+int up4(int input){
 	int n=input;
 	bitset<4> s(n);
 	//cout<<s;
@@ -459,7 +477,7 @@ int up(int input){
 	cout<<ot;
 	return (ot);
 }
-int dn(int input){
+int dn4(int input){
 	int n=input;
 	bitset<4> s(n);
 	//cout<<s;
@@ -491,7 +509,7 @@ int dn(int input){
 	cout<<ot;
 	return (ot);
 }
-int l(int input){
+int l4(int input){
 	int n=input;
 	bitset<4> s(n);
 	//cout<<s;
@@ -523,7 +541,7 @@ int l(int input){
 	cout<<ot;
 	return (ot);
 }
-int r(int input){
+int r4(int input){
 	int n=input;
 	bitset<4> s(n);
 	//cout<<s;
@@ -552,6 +570,95 @@ int r(int input){
 	s[3]=y1;
 
 	int ot=s[0]+s[1]*2+s[2]*4+s[3]*8;
+	cout<<ot;
+	return (ot);
+}
+
+int lr(int i){
+if(i==2){return 0;}
+if(i==0){return 2;}
+if(i==1){return 3;}
+if(i==3){return 1;}
+
+}
+int ud(int i){
+if(i==2){return 3;}
+if(i==0){return 1;}
+if(i==1){return 0;}
+if(i==3){return 2;}
+
+}
+int l3(int input){
+	int n=input;
+	bitset<3> s(n);
+	//cout<<s;
+	int d=s[1];
+	int c=s[2];
+	int cd=d+10*c;
+	int y1;
+	int y2;
+	if(cd==10){
+		y1= 1;
+		y2=1;
+	}else if(cd==11){
+		y1=0;
+		y2= 1;
+	}else if(cd==1){
+		y1=0;
+		y2=0;
+	}else if(cd==0){
+		y1=1;
+		y2=0;
+	}
+	//int a=s[3];
+	//int b=s[2];
+	//int ab=a*10+b;
+	s[1]=y2;
+	s[2]=y1;
+
+	int ot=s[0]+s[1]*2+s[2]*4;
+	cout<<ot;
+	return (ot);
+}
+int r3(int input){
+	int n=input;
+	bitset<3> s(n);
+	//cout<<s;
+	int d=s[1];
+	int c=s[2];
+	int cd=d+10*c;
+	int y1;
+	int y2;
+	if(cd==10){
+		y1= 0;
+		y2=0;
+	}else if(cd==11){
+		y1=1;
+		y2= 0;
+	}else if(cd==1){
+		y1=1;
+		y2=1;
+	}else if(cd==0){
+		y1=0;
+		y2=1;
+	}
+	//int a=s[3];
+	//int b=s[2];
+	//int ab=a*10+b;
+	s[1]=y2;
+	s[2]=y1;
+
+	int ot=s[0]+s[1]*2+s[2]*4;
+	cout<<ot;
+	return (ot);
+}
+
+int updn3(int input){
+	int n=input;
+	bitset<3> s(n);
+	int d=s[0];
+	if(d==0){s[0]=1;}else if(d==1){s[0]=0;}
+	int ot=s[0]+s[1]*2+s[2]*4;
 	cout<<ot;
 	return (ot);
 }
@@ -568,9 +675,10 @@ int main()
 	output+=kmap(instrA,instrB,instrC,X22,X33,X44);
 	output+="\nprime implicant:";
 	cout<<output;
-	up(12);
-	dn(11);
-	l(2);
-	r(9);
+cout<<lr(0);
+cout<<ud(3);
+	l3(2);
+	r3(7);
+	updn3(2);
 	return 0;
 }
