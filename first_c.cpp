@@ -2,8 +2,39 @@
 #include <sstream>
 #include <string>
 #include <bitset>
+#include <fstream>
+#include <math.h>
 
+#ifdef _WIN32
+#include <windows.h>
+#define SYSERROR()  GetLastError()
+#else
+#include <errno.h>
+#define SYSERROR()  errno
+#endif
+
+#define eatFILE 500
 using namespace std;
+string globstr;
+
+int writeFILE(string TXT){
+
+	ofstream of("output.txt");
+	if(of.is_open())
+	{
+		of<<TXT<<std::endl;
+		of.flush();
+		of.close();
+//		cout<<"wrote the file successfully!"<<endl;
+	}
+	else
+	{
+		cerr<<"Failed to open file : "<<SYSERROR()<<endl;
+		return -1;
+	}
+	return 0;
+}
+
 string EQ(string input,int add){
 	string buf="";
 	for (int i = 0 ; i < add ;i++){
@@ -363,10 +394,10 @@ void array_changer(int *arr,int v,string sm,string sd){
 	}
 }
 int t(int i){
-if ((i==1)||(i==-1)){
-return 1;
-}
-return 0;
+	if ((i==1)||(i==-1)){
+		return 1;
+	}
+	return 0;
 }
 string kmap(string instrA,string instrB,string instrC,int *X22,int *X33,int *X44){
 
@@ -428,18 +459,21 @@ string kmap(string instrA,string instrB,string instrC,int *X22,int *X33,int *X44
 			array_changer(X22,v*v,mBUF,dBUF);
 			returN= (plot2(X22));
 			int resl=0;
-	if((X22[0]==0)&&(X22[1]==0)&&(X22[2]==0)&&(X22[3]==0)){resl=0;}
-	
-	if((X22[0]*X22[1]*X22[2]*X22[3])==1){resl=1;}
-	int st=0;
-	int rem[];
-	if(t(X22[st])){
-if(t(X22[ud(st)])){
+			if((X22[0]==0)&&(X22[1]==0)&&(X22[2]==0)&&(X22[3]==0)){resl=0;}
 
-}
+			if((X22[0]*X22[1]*X22[2]*X22[3])==1){resl=1;}
+			/*doing~~~~
+			  int st=0;
+			  int rem[];
+			  if(t(X22[st])){
+			  if(t(X22[ud(st)])){
 
-	}
-	
+			  }
+
+			  }
+
+*/
+
 			break;
 	}
 	return (returN);
@@ -575,17 +609,17 @@ int r4(int input){
 }
 
 int lr(int i){
-if(i==2){return 0;}
-if(i==0){return 2;}
-if(i==1){return 3;}
-if(i==3){return 1;}
+	if(i==2){return 0;}
+	if(i==0){return 2;}
+	if(i==1){return 3;}
+	if(i==3){return 1;}
 
 }
 int ud(int i){
-if(i==2){return 3;}
-if(i==0){return 1;}
-if(i==1){return 0;}
-if(i==3){return 2;}
+	if(i==2){return 3;}
+	if(i==0){return 1;}
+	if(i==1){return 0;}
+	if(i==3){return 2;}
 
 }
 int l3(int input){
@@ -662,23 +696,147 @@ int updn3(int input){
 	cout<<ot;
 	return (ot);
 }
+string i2s(int i){
+	int ii=i+97;
+char buf = (char)ii;
+stringstream ss;
+string target;
+char mychar=buf;
+ss << mychar;
+ss >> target;
+return target;
+}
+void listS(int *add,int sz){
+	int k=(int)globstr.size();
+	if (k==0){
+	k++;
+	k--;
+	}else{
+	globstr=globstr.substr(0,k-1);
+	}
+	globstr+=i2s(-1);
+for (int i = 0 ; i<sz;i++){
+	globstr+=i2s(add[i]);
+}
+globstr+=i2s(-2);
+}
+void listG(){
+}
+void listR(){
+}
+
+int curc(int *ary,int sz){
+for(int i =0;i<sz;i++){
+	int ij=i;
+	cout<<"go"<<endl;
+for(int fuck=1;fuck<4;fuck++){
+cout<<"fk";
+	int fk=pow(2,fuck);
+
+cout<<fk;
+int smsm=0;
+int gpnum[fk];
+int gpck=0;
+for (int uu=0;uu<=fk;uu++){
+for (int dd=0;dd<=fk;dd++){
+for (int rr=0;rr<=fk;rr++){
+for (int ll=0;ll<=fk;ll++){
+if((uu+dd+rr+ll)==fk){
+int isallz=1;
+//isallz*=ary[ij];
+//gpnum[gpck]=ij;
+	for(int ux=0;ux<uu;ux++){
+ij=up4(ij);
+isallz*=ary[ij];
+	gpnum[gpck]=ij;
+gpck++;
+	}
+for(int rx=0;rx<rr;rx++){
+ij=r4(ij);
+isallz*=ary[ij];
+		gpnum[gpck]=ij;
+gpck++;
+
+	}
+for(int dx=0;dx<dd;dx++){
+ij=dn4(ij);
+isallz*=ary[ij];
+		gpnum[gpck]=ij;
+gpck++;
+
+	}
+for(int lx=0;lx<ll;lx++){
+ij=l4(ij);
+isallz*=ary[ij];
+		gpnum[gpck]=ij;
+gpck++;
+
+	}
+if((isallz==1)&&(i==ij)){
+listS(gpnum,fk);
+cout<<"OK"<<endl;
+cout<<globstr<<endl;
+}}}}}}}}}
+
 
 int main() 
 {
+
+//	curc(1);
+	//DOWN (file IN)
+	globstr="";
+	fstream fin;
+	char line[eatFILE];
+	string trySTR="";
+	fin.open("input.txt",ios::in);
+	while(fin.getline(line,sizeof(line),'\n')){
+		trySTR+= line;
+		trySTR+="\n";
+	}
+	//cout<<trySTR<<endl;
+	string IA="";
+	string IB="";
+	string IC="";
+	int Ibufi=1;
+	for (int i= 0 ; i < (int)sizeof(trySTR)/(int)sizeof(char);i++){
+		if ((trySTR[i]!='\n')&&(Ibufi==3)){
+			IC+=trySTR[i];
+		}else if(Ibufi==3){break;}
+		if ((trySTR[i]!='\n')&&(Ibufi==2)){
+			IB+=trySTR[i];
+		}else if(Ibufi ==2){
+			Ibufi=3;
+		}
+		if ((trySTR[i]!='\n')&&(Ibufi==1)){
+			IA+=trySTR[i];
+		}else if(Ibufi==1){
+			Ibufi=2;
+		}
+	}
+	//UP (file IN)
+	cout<<IA<<endl;
+	cout<<IB<<endl;
+	cout<<IC<<endl;
 	int X22[]={0,0,0,0};
 	int X33[]={0,0,0,0,0,0,0,0};
 	int X44[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-	string instrA="-v 2";
-	string instrC= "-m 0,1";
-	string instrB="-d 3";
+//	string instrA="-v 2";
+//	string instrC= "-m 0,1";
+//	string instrB="-d 3";
+	string instrA=IA;
+	string instrB=IB;
+	string instrC=IC;
 	string output="";
 	output+=kmap(instrA,instrB,instrC,X22,X33,X44);
 	output+="\nprime implicant:";
 	cout<<output;
-cout<<lr(0);
-cout<<ud(3);
-	l3(2);
-	r3(7);
-	updn3(2);
+//	cout<<lr(0);
+//	cout<<ud(3);
+//	l3(2);
+//	r3(7);
+//	updn3(2);
+//curc(X44,16);
+cout<<globstr;
+	writeFILE(output);
 	return 0;
 }
