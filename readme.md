@@ -70,9 +70,3 @@ simulator.exe
 ### 輸出
 
 請查看`output.txt`來得知最終結果
-
-## 聯絡開發人員
-
-若此份程式碼無法執行，請聯絡以下:
-
-`e24074724@mail.ncku.edu.tw`
