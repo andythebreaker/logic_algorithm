@@ -11,6 +11,4 @@ CD \ | 00  01  11  10|
   10 | 0 | X | X | X |
 -----+---+---+---+---+
 
-prime implcant: a'c' + ac
-essential prime implicant: a'c' + ac
-F(A, B, C, D) = a'c' + ac
+prime implicant:
